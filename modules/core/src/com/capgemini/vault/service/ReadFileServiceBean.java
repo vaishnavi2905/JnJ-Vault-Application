@@ -33,6 +33,7 @@ public class ReadFileServiceBean implements ReadFileService {
     public int intSuccessCount;
 
     public String readVault(File fileid, String name, User user) {
+        System.out.println("HII");
     try {
             apiErrorCount = 0;
             apiSuccessCount = 0;
