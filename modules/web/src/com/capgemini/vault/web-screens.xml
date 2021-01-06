@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/capgemini/vault/screens.xml"/>
+    <screen id="vaultLoginWindow" template="com/capgemini/vault/web/screens/ext-loginWindow.xml"/>
+    <!--<screen id="vault_BusinessUnitMaster.browse"
+            template="/com/capgemini/vault/web/businessunitmaster/business-unit-master-browse.xml"/>
+    <screen id="vault_BusinessUnitMaster.edit"
+            template="/com/capgemini/vault/web/businessunitmaster/business-unit-master-edit.xml"/>
+    <screen id="vault_BusinessUnitMaster.browse"
+            template="/com/capgemini/vault/web/businessunitmaster/business-unit-master-browse.xml"/>
+    <screen id="vault_BusinessUnitMaster.edit"
+            template="/com/capgemini/vault/web/businessunitmaster/business-unit-master-edit.xml"/>
+    <screen id="vault_UserAccess.edit" template="com/capgemini/vault/web/useraccess/user-access-edit.xml"/>
+    <screen id="vault_MasterData.browse" template="com/capgemini/vault/web/screens/masterdata/master-data-browse.xml"/>-->
+    <screen id="vault_MasterDataManagement.browse"
+            template="com/capgemini/vault/web/screens/masterdatamanagement/master-data-management-browse.xml"/>
+</screen-config>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://uploadSummaryBrowse.caption"
+        focusComponent="uploadSummariesTable"
+        messagesPack="com.capgemini.vault.web.screens.uploadsummary">
+    <data readOnly="true">
+        <collection id="uploadSummariesDc"
+                    class="com.capgemini.vault.entity.UploadSummary"
+                    view="uploadSummary-view">
+            <loader id="uploadSummariesDl">
+                <query>
+                    <![CDATA[select e from vault_UploadSummary e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where> e.createdBy = :User
+                                </c:where>
+                            </c:jpql>
+                            <or>
+                                <c:jpql>
+                                    <c:where>
+                                        e.uplFilename like :name
+                                    </c:where>
+                                </c:jpql>
+                            </or>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+        <collection id="usersDc" class="com.haulmont.cuba.security.entity.User">
+            <view extends="_local"/>
+            <loader id="usersDl">
+                <query>
+                    <![CDATA[select e from sec$User e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="uploadDetails"
+            spacing="true">
+        <vbox spacing="true" stylename="custom-panel">
+            <groupBox spacing="true" caption="Import" stylename="summary-groupbox" collapsable="true">
+                <vbox spacing="true">
+                    <upload id="upload" dropZone="dropzone" showFileName="true"
+                            uploadButtonCaption="Import" stylename="ok-icon" uploadButtonIcon="UPLOAD"/>
+                </vbox>
+                <vbox id="dropzone" spacing="true" height="75px" stylename="dropzone-container">
+                    <label stylename="dropzone-description" value="Drop file here" align="MIDDLE_CENTER"/>
+                </vbox>
+            </groupBox>
+            <vbox spacing="true"/>
+        </vbox>
+        <vbox id="uploadDetails" spacing="true" stylename="custom-panel">
+            <groupBox spacing="true" stylename="summary-groupbox" caption="Summary" height="100%">
+                <groupTable id="uploadSummariesTable"
+                            width="100%"
+                            dataContainer="uploadSummariesDc" stylename="custom-table" height="100%">
+                    <actions>
+                        <action id="refresh" type="refresh"/>
+                        <action id="excel" type="excel"/>
+                    </actions>
+                    <columns>
+                        <column id="createTs" caption="Date"/>
+                        <column id="createdBy" caption="User"/>
+                        <column id="uplFilename" caption="File Name"/>
+                        <column id="uplDatatype" caption="Datatype"/>
+                        <column id="uplSuccessRecords" caption="Success Records" link="true"
+                                linkInvoke="openStagingScreen"/>
+                        <column id="uplErrorRecords" caption="Error Records" link="true" linkInvoke="openErrorScreen"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="refreshBtn" action="uploadSummariesTable.refresh" stylename="refresh-icon"/>
+                        <button id="excelBtn" action="uploadSummariesTable.excel" stylename="excel-icon"/>
+                        <button id="filterBtn" icon="font-icon:FILTER" stylename="filter-button history-icon"
+                                width="8px"/>
+                        <textField id="FileNameFilter" inputPrompt="Enter Filename" width="110px"/>
+                        <lookupField id="UserFilter" nullName="All Users" width="120px"
+                                     optionsContainer="usersDc"/>
+                    </buttonsPanel>
+                </groupTable>
+            </groupBox>
+        </vbox>
+        <filter id="filter"
+                applyTo="uploadSummariesTable"
+                dataLoader="uploadSummariesDl" visible="false">
+            <properties include=".*"/>
+        </filter>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

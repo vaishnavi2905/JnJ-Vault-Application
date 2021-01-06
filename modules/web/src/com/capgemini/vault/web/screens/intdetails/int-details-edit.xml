@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://intDetailsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.capgemini.vault.web.screens.intdetails">
+    <data>
+        <instance id="intDetailsDc"
+                  class="com.capgemini.vault.entity.IntDetails" view="intDetails-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <vbox spacing="true" height="100%" stylename="custom-panel">
+                <form id="form" dataContainer="intDetailsDc">
+                    <column width="350px">
+                        <textField id="intAssetIdField" property="intAssetId"/>
+                        <textArea id="intDescriptionField" property="intDescription"/>
+                        <textArea id="intPayloadField" property="intPayload"/>
+                        <lookupField id="intRegionField" property="intRegion"/>
+                        <lookupField id="intPlatformField" property="intPlatform"/>
+                        <lookupField id="intBrandOrBuField" property="intBrandOrBu"/>
+                        <lookupField id="intSrcProtocolField" property="intSrcProtocol"/>
+                        <lookupField id="intDestAppField" property="intDestApp"/>
+                        <lookupField id="intDestPayloadTypeField" property="intDestPayloadType"/>
+                        <lookupField id="intDesignPatternField" property="intDesignPattern"/>
+                        <lookupField id="intComplexityField" property="intComplexity"/>
+                        <textField id="intMsgSizeInKbField" property="intMsgSizeInKb"/>
+                        <lookupField id="intProjectField" property="intProject"/>
+                        <lookupField id="intPriorityField" property="intPriority"/>
+                        <lookupField id="intProcessingTypeField" property="intProcessingType"/>
+                        <lookupField id="intSplOpsField" property="intSplOps"/>
+                        <textArea id="intRemarksField" property="intRemarks"/>
+                        <textField id="technicalSpecLocationField" property="technicalSpecLocation"/>
+                        <textField id="repoLocationField" property="repoLocation"/>
+                        <textField id="linkField" property="link"/>
+                        <lookupField id="intInternalStatusField" property="intInternalStatus"/>
+                    </column>
+                    <column>
+                        <textField id="intNameField" property="intName"/>
+                        <lookupField id="intCrudField" property="intCrud"/>
+                        <lookupField id="intPayloadSecurClassField" property="intPayloadSecurClass"/>
+                        <lookupField id="intCountryField" property="intCountry"/>
+                        <lookupField id="intPlatformVersionField" property="intPlatformVersion"/>
+                        <textField id="intBusinessOwnerField" property="intBusinessOwner"/>
+                        <lookupField id="intSrcPayloadTypeField" property="intSrcPayloadType"/>
+                        <lookupField id="intDestProtocolField" property="intDestProtocol"/>
+                        <textField id="intImplPatternField" property="intImplPattern"/>
+                        <textField id="intThroughputInSecondsField" property="intThroughputInSeconds"/>
+                        <textField id="intOwnerField" property="intOwner"/>
+                        <lookupField id="intWorkstreamField" property="intWorkstream"/>
+                        <lookupField id="intInitiatingSysField" property="intInitiatingSys"/>
+                        <textField id="intDependencyField" property="intDependency"/>
+                        <textField id="intFSpecLocField" property="intFSpecLoc"/>
+                        <textField id="sourceCodeRepositoryField" property="sourceCodeRepository"/>
+                        <textField id="intBaField" property="intBa"/>
+                        <lookupField id="intStatusField" property="intStatus"/>
+                    </column>
+                </form>
+            </vbox>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

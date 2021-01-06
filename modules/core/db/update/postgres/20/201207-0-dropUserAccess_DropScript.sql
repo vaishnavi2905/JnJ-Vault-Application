@@ -1,0 +1,1 @@
+drop table if exists VAULT_USER_ACCESS__U53109 cascade ;

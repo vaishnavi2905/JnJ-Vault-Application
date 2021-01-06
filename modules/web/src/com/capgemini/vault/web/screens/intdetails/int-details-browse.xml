@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://intDetailsBrowse.caption"
+        focusComponent="intDetailsesTable"
+        messagesPack="com.capgemini.vault.web.screens.intdetails">
+    <data readOnly="true">
+        <collection id="intDetailsesDc"
+                    class="com.capgemini.vault.entity.IntDetails"
+                    view="intDetails-withApi-view">
+            <loader id="intDetailsesDl">
+                <query>
+                    <![CDATA[select e from vault_IntDetails e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="intDetailsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="intDetailsesTable"
+                dataLoader="intDetailsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="intDetailsesTable"
+                    width="100%"
+                    dataContainer="intDetailsesDc" stylename="custom-table">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="intAssetId" caption="Asset ID"/>
+                <column id="intName" caption="Name"/>
+                <column id="intDescription" caption="Description"/>
+                <column id="intPayload" caption="Payload"/>
+                <column id="intImplPattern" caption="Implementation Pattern"/>
+                <column id="intThroughputInSeconds" caption="Throughput (in secs)"/>
+                <column id="intMsgSizeInKb" caption="Message (in Kb)"/>
+                <column id="intOwner" caption="Qwner"/>
+                <column id="intBa" caption="BA"/>
+                <column id="intDependency" caption="Dependency"/>
+                <column id="intBusinessOwner"/>
+                <column id="intRemarks"/>
+                <column id="intFSpecLoc"/>
+                <column id="technicalSpecLocation"/>
+                <column id="sourceCodeRepository"/>
+                <column id="repoLocation"/>
+                <column id="link"/>
+                <column id="intLob"/>
+                <column id="intInternalStatus"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="intDetailsesTable.create" stylename="create-icon"/>
+                <button id="editBtn" action="intDetailsesTable.edit" stylename="edit-icon"/>
+                <button id="removeBtn" action="intDetailsesTable.remove" stylename="cancel-icon"/>
+                <relatedEntities for="intDetailsesTable" openType="DIALOG" exclude="intCrud|intPayloadSecurClass|intBrandOrBu|intRegion|intCountry|intPlatform|intPlatformVersion|intSrcProtocol|intSrcPayloadType|intDestApp|intDestProtocol|intDestPayloadType|intDesignPattern|intComplexity|intProject|intPriority|intWorkstream|intProcessingType|intInitiatingSys|intSplOps|intStatus|intUpl">
+                    <property name="ApiDetails" screen="vault_IntApiDetails.browse" caption="API Details"/>
+                </relatedEntities>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

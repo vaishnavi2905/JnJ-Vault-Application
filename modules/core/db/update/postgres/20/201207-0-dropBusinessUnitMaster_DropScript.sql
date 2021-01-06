@@ -1,0 +1,1 @@
+drop table if exists VAULT_BUSINESS_UNIT_MASTER__U05437 cascade ;

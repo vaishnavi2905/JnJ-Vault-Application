@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://apiDetailsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.capgemini.vault.web.screens.apidetails">
+    <data>
+        <instance id="apiDetailsDc"
+                  class="com.capgemini.vault.entity.ApiDetails" view="apiDetails-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <vbox spacing="true" stylename="custom-panel" height="100%">
+                <form id="form" dataContainer="apiDetailsDc">
+                    <column width="350px">
+                        <textField id="intAssetIdField" property="intAssetId"/>
+                        <textField id="apiNameField" property="apiName"/>
+                        <lookupField id="apiClassificationField" property="apiClassification"/>
+                        <lookupField id="apiSupportedOpsField" property="apiSupportedOps"/>
+                        <lookupField id="apiBrandOrBuField" property="apiBrandOrBu"/>
+                        <lookupField id="apiCountryField" property="apiCountry"/>
+                        <lookupField id="apiPriorityField" property="apiPriority"/>
+                        <lookupField id="apiProcessingTypeField" property="apiProcessingType"/>
+                        <lookupField id="apiWorkstreamField" property="apiWorkstream"/>
+                        <lookupField id="apiPlatformField" property="apiPlatform"/>
+                        <lookupField id="apiSrcProtocolField" property="apiSrcProtocol"/>
+                        <lookupField id="apiDestAppField" property="apiDestApp"/>
+                        <lookupField id="apiDestPayloadTypeField" property="apiDestPayloadType"/>
+                        <lookupField id="apiDesignPatternField" property="apiDesignPattern"/>
+                        <textField id="apiIntMessageSizeInKbField" property="apiIntMessageSizeInKb"/>
+                        <lookupField id="apiComplexityField" property="apiComplexity"/>
+                        <textField id="apiLobField" property="apiLob"/>
+                    </column>
+                    <column>
+                        <textField id="apiIdField" property="apiId"/>
+                        <textArea id="apiDescriptionField" property="apiDescription"/>
+                        <textField id="apiEntityNameField" property="apiEntityName"/>
+                        <lookupField id="apiPayloadSecurClassField" property="apiPayloadSecurClass"/>
+                        <lookupField id="apiRegionField" property="apiRegion"/>
+                        <lookupField id="apiProjectField" property="apiProject"/>
+                        <lookupField id="apiStatusField" property="apiStatus"/>
+                        <textField id="apiBusinessOwnerField" property="apiBusinessOwner"/>
+                        <textField id="apiReleaseField" property="apiRelease"/>
+                        <lookupField id="apiPlatformVersionField" property="apiPlatformVersion"/>
+                        <lookupField id="apiSrcPayloadTypeField" property="apiSrcPayloadType"/>
+                        <lookupField id="apiDestProtocolField" property="apiDestProtocol"/>
+                        <textField id="apiIntOwnerField" property="apiIntOwner"/>
+                        <textField id="apiThrouputInSecField" property="apiThrouputInSec"/>
+                        <textField id="apiDependencyField" property="apiDependency"/>
+                        <textArea id="apiRemarksField" property="apiRemarks"/>
+                        <lookupField id="apiInternalStatusField" property="apiInternalStatus"/>
+                    </column>
+
+                </form>
+            </vbox>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

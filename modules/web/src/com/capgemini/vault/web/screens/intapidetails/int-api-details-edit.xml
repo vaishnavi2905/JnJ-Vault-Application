@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://intApiDetailsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.capgemini.vault.web.screens.intapidetails">
+    <data>
+        <instance id="intApiDetailsDc"
+                  class="com.capgemini.vault.entity.IntApiDetails" view="intApiDetails-editor-view">
+            <loader/>
+        </instance>
+        <collection id="apiDetailsesDc" class="com.capgemini.vault.entity.ApiDetails" view="apiDetails-view">
+            <loader id="apiDetailsesDl">
+                <query>
+                    <![CDATA[select e from vault_ApiDetails e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" height="100%" width="100%">
+        <vbox id="vboxDetails" spacing="true" stylename="custom-panel" margin="true">
+            <hbox spacing="true">
+                <label stylename="custom-panel-caption" value="msg://label.value"/>
+                <optionsGroup id="optionsGroupInt" orientation="horizontal" width="100%" editable="false"
+                              height="100%"/>
+            </hbox>
+            <hbox spacing="true" height="5px" width="100%"/>
+            <hbox spacing="true" height="100%">
+                <label stylename="custom-panel-caption" value="API Details"/>
+                <optionsGroup id="optionsGroupAPI" width="100%"
+                              height="100%" multiselect="true"/>
+            </hbox>
+        </vbox>
+        <hbox spacing="true" align="TOP_RIGHT">
+            <buttonsPanel>
+                <button id="okBtn" caption="Save" icon="icons/ok.png" stylename="ok-icon" invoke="onOkBtnClick"
+                />
+                <button id="cancelBtn" caption="Cancel" icon="icons/cancel.png" stylename="cancel-icon"
+                        invoke="onCancelBtnClick"/>
+            </buttonsPanel>
+        </hbox>
+        <hbox id="editActions" spacing="true" visible="false">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://stagingScreen.caption"
+        messagesPack="com.capgemini.vault.web.screens">
+    <layout>
+        <groupBox spacing="true" height="100%" stylename="summary-groupbox">
+            <vbox spacing="true" height="100%" stylename="custom-panel">
+                <tabSheet id="detailsTabsheet" stylename="custom-tabsheet" height="100%">
+                    <tab id="tabInt" caption="Integration" icon="font-icon:BUILDING" margin="true,false,false,false">
+                        <fragment id="intFragment" screen="vault_StagingFragment" height="100%"/>
+                    </tab>
+                    <tab id="tabApi" caption="API" icon="font-icon:BUILDING_O" margin="true,false,false,false">
+                        <fragment id="apiFragment" screen="vault_ApiFragment" height="100%"/>
+                    </tab>
+                </tabSheet>
+            </vbox>
+        </groupBox>
+    </layout>
+</window>

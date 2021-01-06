@@ -1,0 +1,1 @@
+drop table if exists VAULT_MASTER_DATA__U18143 cascade ;

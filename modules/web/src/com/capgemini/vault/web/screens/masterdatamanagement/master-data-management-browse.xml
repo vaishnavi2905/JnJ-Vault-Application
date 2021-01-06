@@ -1,0 +1,102 @@
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://masterDataManagementBrowse.caption"
+        class="com.capgemini.vault.web.screens.masterdatamanagement.MasterDataManagementBrowse"
+        focusComponent="table"
+        lookupComponent="table"
+        messagesPack="com.capgemini.vault.web.screens.masterdatamanagement">
+    <dsContext>
+        <datasource id="masterDataManagementDs"
+                    class="com.capgemini.vault.entity.MasterDataManagement"
+                    view="_local"/>
+        <groupDatasource id="masterDataManagementsDs"
+                         class="com.capgemini.vault.entity.MasterDataManagement"
+                         view="masterDataManagement-view">
+            <query>
+                <![CDATA[select e from vault_MasterDataManagement e]]>
+                <filter>
+                    <and>
+                        <c>e.masterCode = :component$codeFilter.masterCode</c>
+                        <or>
+                            <c>e.masterType like :custom$type</c>
+                        </or>
+                    </and>
+                </filter>
+            </query>
+        </groupDatasource>
+        <collectionDatasource id="masterDataCodesDs" class="com.capgemini.vault.entity.MasterDataManagement">
+            <query>
+                <![CDATA[select e from vault_MasterDataManagement e ]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <actions>
+        <action id="save" invoke="save" icon="icons/ok.png" caption="mainMsg://actions.Ok" shortcut="CTRL-ENTER"/>
+        <action id="cancel" invoke="cancel" icon="icons/cancel.png" caption="mainMsg://actions.Cancel"
+                description="Esc"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%" pos="35">
+            <vbox id="lookupBox" height="600px" margin="true,true,false,false" spacing="true" stylename="custom-panel">
+                <vbox spacing="true">
+                    <label stylename="custom-panel-caption" value="Master Data"/>
+                    <vbox spacing="true">
+                        <filter id="filter" applyTo="table" datasource="masterDataManagementsDs" visible="false">
+                            <properties include=".*"/>
+                        </filter>
+                    </vbox>
+                    <vbox spacing="true">
+                        <groupTable id="table"
+                                    width="100%" stylename="custom-table" height="500px">
+                            <actions>
+                                <action id="create"/>
+                                <action id="edit"/>
+                                <action id="remove"/>
+                                <action id="excel"/>
+                            </actions>
+                            <columns>
+                                <column id="masterType" caption="Type"/>
+                                <column id="masterCode" caption="Code"/>
+                                <column id="masterDescription" caption="Description"/>
+                            </columns>
+                            <rows datasource="masterDataManagementsDs"/>
+                            <rowsCount/>
+                            <buttonsPanel id="buttonsPanel"
+                                          alwaysVisible="true">
+                                <button id="createBtn" action="table.create" stylename="create-icon"/>
+                                <button id="editBtn" action="table.edit" stylename="edit-icon"/>
+                                <button id="removeBtn" action="table.remove" stylename="cancel-icon"/>
+                                <button id="excelBtn" action="table.excel" stylename="excel-icon"/>
+                                <button id="filterBtn" icon="font-icon:FILTER" stylename="filter-button history-icon"
+                                        width="8px"/>
+                                <textField id="typeFilter" inputPrompt="Enter Type" width="110px"/>
+                                <lookupField id="codeFilter" nullName="All Codes" width="120px"
+                                             optionsDatasource="masterDataCodesDs"/>
+                            </buttonsPanel>
+                        </groupTable>
+                    </vbox>
+                </vbox>
+            </vbox>
+            <vbox id="editBox" height="100%" margin="false,false,false,true" spacing="true">
+                <vbox spacing="true">
+                    <label stylename="custom-panel-caption" value="Master Data Details"/>
+                    <vbox spacing="true"/>
+                    <vbox spacing="true">
+                        <fieldGroup id="fieldGroup" datasource="masterDataManagementDs">
+                            <column width="350px">
+                                <field property="masterType" width="150px" required="true"/>
+                                <field property="masterCode" width="150px"/>
+                                <field property="masterDescription" rows="3" width="250px"/>
+                            </column>
+                        </fieldGroup>
+                    </vbox>
+                </vbox>
+                <hbox id="actionsPane" spacing="true" visible="false">
+                    <button id="saveBtn" action="save"/>
+                    <button id="cancelBtn" action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://intApiDetailsBrowse.caption"
+        focusComponent="intApiDetailsesTable"
+        messagesPack="com.capgemini.vault.web.screens.intapidetails">
+    <data readOnly="true">
+        <collection id="intApiDetailsesDc"
+                    class="com.capgemini.vault.entity.IntApiDetails"
+                    view="intApiDetails-view">
+            <loader id="intApiDetailsesDl">
+                <query>
+                    <![CDATA[select e from vault_IntApiDetails e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="900"/>
+    <layout expand="intApiDetailsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="intApiDetailsesTable"
+                dataLoader="intApiDetailsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="intApiDetailsesTable"
+                    width="100%"
+                    dataContainer="intApiDetailsesDc" stylename="custom-table" contextMenuEnabled="false">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="apiDetails.apiId"/>
+                <column id="apiDetails.apiName" caption="Name"/>
+                <column id="apiDetails.apiDescription" caption="Description"/>
+                <column id="apiDetails.apiClassification" caption="Classification"/>
+                <column id="apiDetails.apiSupportedOps" caption="Supported Ops"/>
+                <column id="apiDetails.apiEntityName" caption="Entity Name"/>
+                <column id="apiDetails.apiPayloadSecurClass" caption="Payload Security CLassification"/>
+                <column id="apiDetails.apiBrandOrBu" caption="Business Unit"/>
+                <column id="apiDetails.apiRegion" caption="Region"/>
+                <column id="apiDetails.apiCountry" caption="Country"/>
+                <column id="apiDetails.apiProject" caption="Project"/>
+                <column id="apiDetails.apiPriority" caption="Priority"/>
+                <column id="apiDetails.apiStatus" caption="Status"/>
+                <column id="apiDetails.apiProcessingType" caption="Processing Type"/>
+                <column id="apiDetails.apiBusinessOwner" caption="Business Owner"/>
+                <column id="apiDetails.apiWorkstream" caption="Workstream"/>
+                <column id="apiDetails.apiRelease" caption="Release"/>
+                <column id="apiDetails.apiPlatform" caption="Platform"/>
+                <column id="apiDetails.apiPlatformVersion" caption="Platform Version"/>
+                <column id="apiDetails.apiSrcProtocol" caption="Source Protocol"/>
+                <column id="apiDetails.apiSrcPayloadType" caption="Source Payload Type"/>
+                <column id="apiDetails.apiDestApp" caption="Destination App"/>
+                <column id="apiDetails.apiDestProtocol" caption="Destination Protocol"/>
+                <column id="apiDetails.apiDestPayloadType" caption="Destination Payload Type"/>
+                <column id="apiDetails.apiDesignPattern" caption="Design Pattern"/>
+                <column id="apiDetails.apiComplexity" caption="Complexity"/>
+                <column id="apiDetails.apiThrouputInSec" caption="Throuput in secs"/>
+                <column id="apiDetails.apiIntMessageSizeInKb" caption="Message size in Kb"/>
+                <column id="apiDetails.apiDependency" caption="Dependency"/>
+                <column id="apiDetails.apiIntOwner" caption="Owner"/>
+                <column id="apiDetails.apiRemarks" caption="Remarks"/>
+                <column id="apiDetails.apiInternalStatus" caption="Internal Status"/>
+
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="intApiDetailsesTable.create" stylename="create-icon"
+                        caption="Add"/>
+                <button id="removeBtn" action="intApiDetailsesTable.remove" stylename="cancel-icon"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

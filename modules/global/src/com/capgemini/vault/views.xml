@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="vault_UploadSummary" name="uploadSummary-view" extends="_local">
+        <property name="createTs"/>
+        <property name="createdBy"/>
+        <property name="updateTs"/>
+        <property name="updatedBy"/>
+    </view>
+    <view entity="vault_ErrorSummary" name="errorSummary-view" extends="_local">
+        <property name="errUpl" view="_minimal">
+            <property name="uplFilename"/>
+            <property name="uplSuccessRecords"/>
+            <property name="uplErrorRecords"/>
+            <property name="createTs"/>
+            <property name="updateTs"/>
+            <property name="updatedBy"/>
+            <property name="uplDatatype"/>
+        </property>
+    </view>
+    <view entity="vault_MasterDataManagement" name="masterDataManagement-view" extends="_local"/>
+    <view entity="vault_IntDetails" name="intDetails-view" extends="_local">
+        <property name="intCrud" view="_minimal"/>
+        <property name="intPayloadSecurClass" view="_minimal"/>
+        <property name="intBrandOrBu" view="_minimal"/>
+        <property name="intRegion" view="_minimal"/>
+        <property name="intCountry" view="_minimal"/>
+        <property name="intPlatform" view="_minimal"/>
+        <property name="intPlatformVersion" view="_minimal"/>
+        <property name="intSrcProtocol" view="_minimal"/>
+        <property name="intSrcPayloadType" view="_minimal"/>
+        <property name="intDestApp" view="_minimal"/>
+        <property name="intDestProtocol" view="_minimal"/>
+        <property name="intDestPayloadType" view="_minimal"/>
+        <property name="intDesignPattern" view="_minimal"/>
+        <property name="intComplexity" view="_minimal"/>
+        <property name="intProject" view="_minimal"/>
+        <property name="intPriority" view="_minimal"/>
+        <property name="intWorkstream" view="_minimal"/>
+        <property name="intProcessingType" view="_minimal"/>
+        <property name="intInitiatingSys" view="_minimal"/>
+        <property name="intSplOps" view="_minimal"/>
+        <property name="intStatus" view="_minimal"/>
+        <property name="intApiDetails" view="_minimal"/>
+        <property name="intUpl" view="_minimal">
+            <property name="createdBy"/>
+        </property>
+    </view>
+    <view entity="vault_ApiDetails" name="apiDetails-view" extends="_local">
+        <property name="apiUpl" view="_minimal">
+        </property>
+        <property name="apiClassification" view="_minimal"/>
+        <property name="apiSupportedOps" view="_minimal"/>
+        <property name="apiPayloadSecurClass" view="_minimal"/>
+        <property name="apiBrandOrBu" view="_minimal"/>
+        <property name="apiRegion" view="_minimal"/>
+        <property name="apiCountry" view="_minimal"/>
+        <property name="apiProject" view="_minimal"/>
+        <property name="apiPriority" view="_minimal"/>
+        <property name="apiStatus" view="_minimal"/>
+        <property name="apiProcessingType" view="_minimal"/>
+        <property name="apiWorkstream" view="_minimal"/>
+        <property name="apiPlatform" view="_minimal"/>
+        <property name="apiPlatformVersion" view="_minimal"/>
+        <property name="apiSrcProtocol" view="_minimal"/>
+        <property name="apiSrcPayloadType" view="_minimal"/>
+        <property name="apiDestApp" view="_minimal"/>
+        <property name="apiDestPayloadType" view="_minimal"/>
+        <property name="apiDesignPattern" view="_minimal"/>
+        <property name="intApiDetails" view="_minimal">
+            <property name="intDetails" view="_minimal">
+                <property name="intAssetId"/>
+            </property>
+            <property name="apiDetails" view="_minimal">
+                <property name="intAssetId"/>
+            </property>
+        </property>
+    </view>
+    <view entity="vault_IntApiDetails" name="intApiDetails-view" extends="_local">
+        <property name="apiDetails" view="_minimal">
+            <property name="intAssetId"/>
+            <property name="apiId"/>
+            <property name="apiDescription"/>
+            <property name="apiClassification" view="_minimal"/>
+            <property name="apiSupportedOps" view="_minimal"/>
+            <property name="apiEntityName"/>
+            <property name="apiPayloadSecurClass" view="_minimal"/>
+            <property name="apiBrandOrBu" view="_minimal"/>
+            <property name="apiRegion" view="_minimal"/>
+            <property name="apiCountry" view="_minimal"/>
+            <property name="apiProject" view="_minimal"/>
+            <property name="apiPriority" view="_minimal"/>
+            <property name="apiStatus" view="_minimal"/>
+            <property name="apiProcessingType" view="_minimal"/>
+            <property name="apiBusinessOwner"/>
+            <property name="apiWorkstream" view="_minimal"/>
+            <property name="apiRelease"/>
+            <property name="apiPlatform" view="_minimal"/>
+            <property name="apiPlatformVersion" view="_minimal"/>
+            <property name="apiSrcProtocol" view="_minimal"/>
+            <property name="apiSrcPayloadType" view="_minimal"/>
+            <property name="apiDestApp" view="_minimal"/>
+            <property name="apiDestProtocol" view="_minimal"/>
+            <property name="apiDestPayloadType" view="_minimal"/>
+            <property name="apiDesignPattern" view="_minimal"/>
+            <property name="apiComplexity" view="_minimal"/>
+            <property name="apiThrouputInSec"/>
+            <property name="apiIntMessageSizeInKb"/>
+            <property name="apiDependency"/>
+            <property name="apiIntOwner"/>
+            <property name="apiRemarks"/>
+            <property name="apiLob"/>
+            <property name="apiInternalStatus"/>
+            <property name="apiUpl" view="_minimal">
+            </property>
+            <property name="intApiDetails" view="_minimal">
+                <property name="apiDetails" view="_minimal"/>
+            </property>
+        </property>
+        <property name="intDetails" view="_minimal">
+            <property name="intAssetId"/>
+        </property>
+    </view>
+    <view entity="vault_IntDetails" name="intDetails-withApi-view" extends="_local">
+        <property name="intUpl" view="_minimal">
+            <property name="createdBy"/>
+        </property>
+        <property name="intCrud" view="_minimal"/>
+        <property name="intPayloadSecurClass" view="_minimal"/>
+        <property name="intStatus" view="_minimal"/>
+        <property name="intSplOps" view="_minimal"/>
+        <property name="intInitiatingSys" view="_minimal"/>
+        <property name="intProcessingType" view="_minimal"/>
+        <property name="intWorkstream" view="_minimal"/>
+        <property name="intPriority" view="_minimal"/>
+        <property name="intProject" view="_minimal"/>
+        <property name="intComplexity" view="_minimal"/>
+        <property name="intDesignPattern" view="_minimal"/>
+        <property name="intDestPayloadType" view="_minimal"/>
+        <property name="intDestProtocol" view="_minimal"/>
+        <property name="intDestApp" view="_minimal"/>
+        <property name="intSrcPayloadType" view="_minimal"/>
+        <property name="intSrcProtocol" view="_minimal"/>
+        <property name="intPlatformVersion" view="_minimal"/>
+        <property name="intPlatform" view="_minimal"/>
+        <property name="intCountry" view="_minimal"/>
+        <property name="intRegion" view="_minimal"/>
+        <property name="intBrandOrBu" view="_minimal"/>
+    </view>
+    <view entity="vault_ApiDetails" name="apiDetails-with_integration-view" extends="_local">
+        <property name="intApiDetails" view="_minimal">
+        </property>
+        <property name="apiClassification" view="_minimal"/>
+        <property name="apiSupportedOps" view="_minimal"/>
+        <property name="apiPayloadSecurClass" view="_minimal"/>
+        <property name="apiBrandOrBu" view="_minimal"/>
+        <property name="apiRegion" view="_minimal"/>
+        <property name="apiCountry" view="_minimal"/>
+        <property name="apiProject" view="_minimal"/>
+        <property name="apiPriority" view="_minimal"/>
+        <property name="apiStatus" view="_minimal"/>
+        <property name="apiProcessingType" view="_minimal"/>
+        <property name="apiWorkstream" view="_minimal"/>
+        <property name="apiPlatform" view="_minimal"/>
+        <property name="apiPlatformVersion" view="_minimal"/>
+        <property name="apiSrcProtocol" view="_minimal"/>
+        <property name="apiSrcPayloadType" view="_minimal"/>
+        <property name="apiDestApp" view="_minimal"/>
+        <property name="apiDestProtocol" view="_minimal"/>
+        <property name="apiDestPayloadType" view="_minimal"/>
+        <property name="apiDesignPattern" view="_minimal"/>
+        <property name="apiComplexity" view="_minimal"/>
+        <property name="apiUpl" view="_minimal">
+            <property name="createdBy"/>
+        </property>
+    </view>
+    <view entity="vault_IntApiDetails" name="apiIntDetails-browseView">
+        <property name="intDetails" view="_minimal">
+            <property name="intAssetId"/>
+            <property name="intUpl" view="_minimal"/>
+            <property name="intName"/>
+            <property name="intDescription"/>
+            <property name="intCrud" view="_minimal"/>
+            <property name="intPayload"/>
+            <property name="intPayloadSecurClass" view="_minimal"/>
+            <property name="intBrandOrBu" view="_minimal"/>
+            <property name="intRegion" view="_minimal"/>
+            <property name="intCountry" view="_minimal"/>
+            <property name="intPlatform" view="_minimal"/>
+            <property name="intPlatformVersion" view="_minimal"/>
+            <property name="intSrcProtocol" view="_minimal"/>
+            <property name="intSrcPayloadType" view="_minimal"/>
+            <property name="intDestApp" view="_minimal"/>
+            <property name="intDestProtocol" view="_minimal"/>
+            <property name="intDestPayloadType" view="_minimal"/>
+            <property name="intDesignPattern" view="_minimal"/>
+            <property name="intImplPattern"/>
+            <property name="intComplexity" view="_minimal"/>
+            <property name="intThroughputInSeconds"/>
+            <property name="intMsgSizeInKb"/>
+            <property name="intOwner"/>
+            <property name="intBa"/>
+            <property name="intProject" view="_minimal"/>
+            <property name="intPriority" view="_minimal"/>
+            <property name="intWorkstream" view="_minimal"/>
+            <property name="intProcessingType" view="_minimal"/>
+            <property name="intInitiatingSys" view="_minimal"/>
+            <property name="intSplOps" view="_minimal"/>
+            <property name="intDependency"/>
+            <property name="intBusinessOwner"/>
+            <property name="intRemarks"/>
+            <property name="intFSpecLoc"/>
+            <property name="technicalSpecLocation"/>
+            <property name="sourceCodeRepository"/>
+            <property name="repoLocation"/>
+            <property name="link"/>
+            <property name="intLob"/>
+            <property name="intStatus" view="_minimal"/>
+            <property name="intInternalStatus"/>
+        </property>
+    </view>
+    <view entity="vault_IntApiDetails" name="intApiDetails-editor-view" extends="_local">
+        <property name="intDetails" view="_minimal">
+            <property name="intName"/>
+        </property>
+        <property name="apiDetails" view="_minimal">
+            <property name="apiName"/>
+        </property>
+    </view>
+</views>

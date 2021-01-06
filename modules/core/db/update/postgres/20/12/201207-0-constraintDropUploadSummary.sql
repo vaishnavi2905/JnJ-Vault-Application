@@ -1,0 +1,3 @@
+alter table vault_api_details drop constraint FK_VAULT_API_DETAILS_ON_API_UPL ;
+alter table vault_error_table drop constraint FK_VAULT_ERROR_TABLE_ON_ERR_UPL ;
+alter table vault_int_details drop constraint FK_VAULT_INT_DETAILS_ON_INT_UPL ;

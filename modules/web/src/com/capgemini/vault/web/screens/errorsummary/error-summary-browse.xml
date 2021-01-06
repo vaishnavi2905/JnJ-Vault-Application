@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://errorSummaryBrowse.caption"
+        focusComponent="errorSummariesTable"
+        messagesPack="com.capgemini.vault.web.screens.errorsummary">
+    <data readOnly="true">
+        <collection id="errorSummariesDc"
+                    class="com.capgemini.vault.entity.ErrorSummary">
+            <view extends="_local">
+                <property name="errUpl" view="_minimal">
+                    <property name="uplFilename"/>
+                    <property name="uplDatatype"/>
+                    <property name="uplSuccessRecords"/>
+                    <property name="uplErrorRecords"/>
+                    <property name="createTs"/>
+                    <property name="updateTs"/>
+                    <property name="updatedBy"/>
+                </property>
+            </view>
+            <loader id="errorSummariesDl">
+                <query>
+                    <![CDATA[select e from vault_ErrorSummary e order by e.createTs desc]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where> e.errUpl.createdBy = :user</c:where>
+
+                            </c:jpql>
+                            <or>
+                                <c:jpql>
+                                    <c:where>e.errUpl.uplFilename like :file</c:where>
+                                </c:jpql>
+                            </or>
+                            <or>
+                                <c:jpql>
+                                    <c:where>e.errRowNo = :row</c:where>
+                                </c:jpql>
+                            </or>
+                            <or>
+                                <c:jpql>
+                                    <c:where>e.errColNo = :col</c:where>
+                                </c:jpql>
+                            </or>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+        <collection id="usersDc" class="com.haulmont.cuba.security.entity.User">
+            <view extends="_local"/>
+            <loader id="usersDl">
+                <query>
+                    <![CDATA[select e from sec$User e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="errorTable"
+            spacing="true">
+        <vbox spacing="true" stylename="custom-panel">
+            <filter id="filter"
+                    applyTo="errorSummariesTable"
+                    dataLoader="errorSummariesDl" visible="false">
+                <properties include=".*"/>
+            </filter>
+        </vbox>
+        <vbox id="errorTable" spacing="true" stylename="custom-panel" margin="true">
+            <groupTable id="errorSummariesTable"
+                        width="100%"
+                        dataContainer="errorSummariesDc" stylename="custom-table" height="100%">
+                <actions>
+                    <action id="excel" type="excel"/>
+                </actions>
+                <columns>
+                    <column id="errUpl.createTs" caption="msg://errUpl.createTs.caption"/>
+                    <column id="errUpl.createdBy" caption="msg://errUpl.createdBy.caption"/>
+                    <column id="errUpl.uplFilename" caption="msg://errUpl.uplFilename.caption"/>
+                    <column id="errUpl.uplDatatype" caption="DataType"/>
+                    <column id="errRowNo" caption="msg://errRowNo.caption"/>
+                    <column id="errColNo" caption="msg://errColNo.caption"/>
+                    <column id="errDescription" caption="msg://errDescription.caption"/>
+                </columns>
+                <rowsCount/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="excelBtn" action="errorSummariesTable.excel" stylename="excel-icon" caption="Export"/>
+                    <button id="filterBtn" icon="font-icon:FILTER" stylename="filter-button history-icon" width="8px"/>
+                    <lookupField id="userFilter" optionsContainer="usersDc" width="100px"/>
+                    <textField id="fileFilter" inputPrompt="msg://fileFilter.inputPrompt" width="110px"/>
+                    <textField id="rowFilter" inputPrompt="Row No" width="100px"/>
+                    <textField id="columnFilter" inputPrompt="msg://columnFilter.inputPrompt" width="100px"/>
+                </buttonsPanel>
+            </groupTable>
+        </vbox>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

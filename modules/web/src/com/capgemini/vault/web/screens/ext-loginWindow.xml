@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd" class="com.capgemini.vault.web.screens.ExtAppLoginWindow"
+        messagesPack="com.capgemini.vault.web.screens" xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd"
+        extends="/com/haulmont/cuba/web/app/loginwindow/loginwindow.xml">
+    <dialogMode height="600" width="800"/>
+    <layout>
+        <vbox id="loginWrapper">
+            <vbox id="loginMainBox">
+                <hbox id="loginTitleBox" margin="true,false,true,false">
+                    <image id="logoImage" height="0px" width="0px" visible="false"/>
+                    <label id="welcomeLabel" stylename="login_caption" height="33px"/>
+                </hbox>
+                <image id="welcome" align="MIDDLE_CENTER" ext:index="1">
+                    <theme path="branding/app-icon-login - Copy.png"/>
+                </image>
+                <vbox id="loginForm" align="MIDDLE_CENTER" width="200px">
+                    <cssLayout id="loginCredentials" align="MIDDLE_CENTER" width="200px">
+                        <textField id="loginField" width="200px" align="MIDDLE_CENTER" height="35px"/>
+                        <passwordField id="passwordField" width="200px" align="MIDDLE_CENTER" height="35px"/>
+                    </cssLayout>
+                    <hbox id="rememberLocalesBox" align="MIDDLE_CENTER">
+                        <checkBox id="rememberMeCheckBox" align="MIDDLE_CENTER"/>
+                        <lookupField id="localesSelect" align="MIDDLE_CENTER" visible="false"/>
+                    </hbox>
+                    <button id="loginButton" width="95px" height="32px"/>
+                </vbox>
+                <embedded align="BOTTOM_CENTER" height="0px" icon="branding/app-icon-login.png"
+                          src="theme://branding/loginlogo.png" type="IMAGE" width="0px" visible="false"/>
+                <image align="BOTTOM_CENTER">
+                    <theme path="branding/app-icon-login.png"/>
+                </image>
+                <label id="version" align="TOP_CENTER" stylename="login_version"
+                       value="mainMsg://loginWindow.appVersion"/>
+                <label id="rights" align="TOP_CENTER" stylename="login_version"
+                       value="mainMsg://loginWindow.appRights"/>
+            </vbox>
+        </vbox>
+        <label id="poweredByLink" height="0px" width="0px"/>
+    </layout>
+</window>

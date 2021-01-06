@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://apiIntDetailsBrowse.caption"
+        focusComponent="intApiDetailsesTable"
+        messagesPack="com.capgemini.vault.web.screens.intapidetails">
+    <data readOnly="true">
+        <collection id="intApiDetailsesDc"
+                    class="com.capgemini.vault.entity.IntApiDetails"
+                    view="apiIntDetails-browseView">
+            <loader id="intApiDetailsesDl">
+                <query>
+                    <![CDATA[select e from vault_IntApiDetails e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="900"/>
+    <layout expand="intApiDetailsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="intApiDetailsesTable"
+                dataLoader="intApiDetailsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="intApiDetailsesTable"
+                    width="100%"
+                    dataContainer="intApiDetailsesDc" stylename="custom-table" contextMenuEnabled="false">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="intDetails.intName" caption="Name"/>
+                <column id="intDetails.intDescription" caption="Description"/>
+                <column id="intDetails.intCrud" caption="Crud"/>
+                <column id="intDetails.intPayload" caption="Payload"/>
+                <column id="intDetails.intPayloadSecurClass" caption="Payload Security Classification"/>
+                <column id="intDetails.intBrandOrBu" caption="Business Unit"/>
+                <column id="intDetails.intRegion" caption="Region"/>
+                <column id="intDetails.intCountry" caption="Country"/>
+                <column id="intDetails.intPlatform" caption="Platform"/>
+                <column id="intDetails.intPlatformVersion" caption="Platform Version"/>
+                <column id="intDetails.intSrcProtocol" caption="Source Protocol"/>
+                <column id="intDetails.intSrcPayloadType" caption="Source Payload Type"/>
+                <column id="intDetails.intDestApp" caption="Destination Application"/>
+                <column id="intDetails.intDestProtocol" caption="Destination Protocol"/>
+                <column id="intDetails.intDestPayloadType" caption="Destination Payload Type"/>
+                <column id="intDetails.intDesignPattern" caption="Design Pattern"/>
+                <column id="intDetails.intImplPattern" caption="Implementation Pattern"/>
+                <column id="intDetails.intComplexity" caption="Complexity"/>
+                <column id="intDetails.intThroughputInSeconds" caption="Throughput in secs"/>
+                <column id="intDetails.intMsgSizeInKb" caption="Message in Kb"/>
+                <column id="intDetails.intOwner" caption="Owner"/>
+                <column id="intDetails.intBa" caption="BA"/>
+                <column id="intDetails.intProject" caption="Project"/>
+                <column id="intDetails.intPriority" caption="Priority"/>
+                <column id="intDetails.intWorkstream" caption="Workstream"/>
+                <column id="intDetails.intProcessingType" caption="Processing Type"/>
+                <column id="intDetails.intInitiatingSys" caption="Initiating System"/>
+                <column id="intDetails.intSplOps" caption="Special Ops"/>
+                <column id="intDetails.intDependency" caption="Dependency"/>
+                <column id="intDetails.intBusinessOwner" caption="Business Owner"/>
+                <column id="intDetails.intRemarks" caption="Remarks"/>
+                <column id="intDetails.intFSpecLoc" caption="F-Spec Location"/>
+                <column id="intDetails.technicalSpecLocation" caption="Technical Spec Location"/>
+                <column id="intDetails.sourceCodeRepository" caption="Source Code Repository"/>
+                <column id="intDetails.repoLocation" caption="Repository Location"/>
+                <column id="intDetails.link" caption="Link"/>
+                <column id="intDetails.intStatus" caption="Status"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="intApiDetailsesTable.create" stylename="create-icon" caption="Add"/>
+                <button id="removeBtn" action="intApiDetailsesTable.remove" stylename="cancel-icon"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

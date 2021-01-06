@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd" xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd">
+    <data>
+        <collection id="apiDetailsesDc" class="com.capgemini.vault.entity.ApiDetails"
+                    view="apiDetails-with_integration-view">
+            <loader id="apiDetailsesDl">
+                <query>
+                    <![CDATA[select e from vault_ApiDetails e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where>e.apiName like :name</c:where>
+                            </c:jpql>
+                            <or>
+                                <c:jpql>
+                                    <c:where>e.apiInternalStatus like :status</c:where>
+                                </c:jpql>
+                            </or>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="detailsBox">
+        <vbox spacing="true" margin="true">
+            <groupBox id="filterGroupBox" spacing="true" caption="Filter" collapsable="true"
+                      stylename="custom-groupbox" collapsed="true">
+                <tabSheet stylename="custom-tabsheet">
+                    <tab id="tabfilter" caption="Default" margin="true">
+                        <groupBox spacing="true" stylename="summary-groupbox" collapsable="true">
+                            <hbox spacing="true">
+                                <label id="labelApiName" align="MIDDLE_LEFT" value="msg://labelApiName.value"/>
+                                <textField id="textFieldApi" inputPrompt="Enter Name" width="100px"/>
+                                <label id="labelStatus" align="MIDDLE_LEFT" value="msg://labelStatus.value"/>
+                                <lookupField id="lookupFieldStatus" nullName="All Status"
+                                             optionsEnum="com.capgemini.vault.entity.Status" width="100px"/>
+                            </hbox>
+                        </groupBox>
+                    </tab>
+                    <tab id="tabExFilter" caption="Extended" margin="true">
+                        <filter id="filter" applyTo="apiDetailsesTable" dataLoader="apiDetailsesDl" stylename="summary-groupbox">
+                            <properties include=".*"/>
+                        </filter>
+                    </tab>
+                </tabSheet>
+            </groupBox>
+        </vbox>
+        <vbox id="detailsBox" spacing="true">
+            <dataGrid id="apiDetailsesTable" height="100%" width="100%" dataContainer="apiDetailsesDc"
+                      selectionMode="MULTI_CHECK" stylename="custom-grid">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="excel" type="excel"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="apiDetailsesTableCreateBtn" action="apiDetailsesTable.create" stylename="create-icon"/>
+                    <button id="apiDetailsesTableEditBtn" action="apiDetailsesTable.edit" stylename="edit-icon"/>
+                    <button id="apiDetailsesTableExcelBtn" action="apiDetailsesTable.excel" stylename="excel-icon"/>
+                    <button id="apiDetailsesTableRemoveBtn" action="apiDetailsesTable.remove" stylename="cancel-icon"/>
+                    <button id="related" caption="Related Integration" invoke="onRelatedClick"
+                            icon="icons/category.png" stylename="history-icon"/>
+                    <button id="sAbtn" caption="msg://sAbtn.caption" icon="font-icon:ENVELOPE_O" stylename="edit-icon"
+                            invoke="onSAbtnClick"/>
+                    <button id="AppBtn" caption="msg://AppBtn.caption" icon="font-icon:CHECK" stylename="ok-icon"
+                            invoke="onAppBtnClick"/>
+                    <button id="rejBtn" caption="msg://rejBtn.caption" icon="font-icon:CLOSE" stylename="cancel-icon"
+                            invoke="onRejBtnClick"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="intAssetId" property="intAssetId" caption="Asset ID"/>
+                    <column id="apiId" property="apiId" caption="ID"/>
+                    <column id="apiName" property="apiName" caption="Name"/>
+                    <column id="apiDescription" property="apiDescription" caption="Description"/>
+                    <column id="apiEntityName" property="apiEntityName" caption="Entity Name"/>
+                    <column id="apiBusinessOwner" property="apiBusinessOwner" caption="Business Owner"/>
+                    <column id="apiRelease" property="apiRelease" caption="Release"/>
+                    <column id="apiThrouputInSec" property="apiThrouputInSec" caption="Throuput in Secs"/>
+                    <column id="apiIntMessageSizeInKb" property="apiIntMessageSizeInKb" caption="Message in Kb"/>
+                    <column id="apiDependency" property="apiDependency" caption="Dependency"/>
+                    <column id="apiIntOwner" property="apiIntOwner" caption="Owner"/>
+                    <column id="apiRemarks" property="apiRemarks" caption="Remarks"/>
+                    <column id="apiInternalStatus" property="apiInternalStatus" caption="Internal Status"/>
+                    <column id="apiClassification.masterDescription" property="apiClassification.masterDescription"
+                            caption="CLassification"/>
+                    <column id="apiSupportedOps.masterDescription" property="apiSupportedOps.masterDescription"
+                            caption="Supported Ops"/>
+                    <column id="apiPayloadSecurClass.masterDescription"
+                            property="apiPayloadSecurClass.masterDescription"
+                            caption="Payload Security Classification"/>
+                    <column id="apiBrandOrBu.masterDescription" property="apiBrandOrBu.masterDescription"
+                            caption="Business Unit"/>
+                    <column id="apiRegion.masterDescription" property="apiRegion.masterDescription" caption="Region"/>
+                    <column id="apiCountry.masterDescription" property="apiCountry.masterDescription"
+                            caption="Country"/>
+                    <column id="apiProject.masterDescription" property="apiProject.masterDescription"
+                            caption="Project"/>
+                    <column id="apiPriority.masterDescription" property="apiPriority.masterDescription"
+                            caption="Priority"/>
+                    <column id="apiStatus.masterDescription" property="apiStatus.masterDescription" caption="Status"/>
+                    <column id="apiProcessingType.masterDescription" property="apiProcessingType.masterDescription"
+                            caption="Processing Type"/>
+                    <column id="apiWorkstream.masterDescription" property="apiWorkstream.masterDescription"
+                            caption="Workstream"/>
+                    <column id="apiPlatform.masterDescription" property="apiPlatform.masterDescription"
+                            caption="Platform"/>
+                    <column id="apiPlatformVersion.masterDescription" property="apiPlatformVersion.masterDescription"
+                            caption="Version"/>
+                    <column id="apiSrcProtocol.masterDescription" property="apiSrcProtocol.masterDescription"
+                            caption="Source Protocol"/>
+                    <column id="apiSrcPayloadType.masterDescription" property="apiSrcPayloadType.masterDescription"
+                            caption="Source Payload Type"/>
+                    <column id="apiDestApp.masterDescription" property="apiDestApp.masterDescription"
+                            caption="Destination Application"/>
+                    <column id="apiDestProtocol.masterDescription" property="apiDestProtocol.masterDescription"
+                            caption="Destination Protocol"/>
+                    <column id="apiDestPayloadType.masterDescription" property="apiDestPayloadType.masterDescription"
+                            caption="Destination Payload Type"/>
+                    <column id="apiDesignPattern.masterDescription" property="apiDesignPattern.masterDescription"
+                            caption="Design Pattern"/>
+                    <column id="apiComplexity.masterDescription" property="apiComplexity.masterDescription"
+                            caption="Complexity"/>
+                    <column id="apiUpl.createdBy" property="apiUpl.createdBy" caption="User"/>
+                </columns>
+            </dataGrid>
+        </vbox>
+    </layout>
+</fragment>

@@ -1,0 +1,1 @@
+drop table if exists VAULT_API_DETAILS__U23580 cascade ;

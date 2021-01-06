@@ -1,0 +1,102 @@
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="mainMsg://application.caption">
+    <layout expand="horizontalWrap"
+            stylename="c-sidemenu-responsive"
+            responsive="true">
+        <hbox id="horizontalWrap"
+              expand="workArea"
+              stylename="c-sidemenu-layout"
+              width="100%">
+            <cssLayout id="sideMenuPanel"
+                       height="100%"
+                       stylename="custom-sidemenu-panel" responsive="true" width="190px" >
+                <button id="mobileMenuButton"
+                        caption="mainMsg://app.menu"
+                        icon="icons/mobile-menu.png"
+                        stylename="primary c-sidemenu-toggle"/>
+                <hbox id="mobileButtonsBox"
+                      stylename="c-sidemenu-mobile-buttons">
+                    <newWindowButton id="mobileNewWindowButton"
+                                     description="mainMsg://newWindowBtnDescription"
+                                     icon="app/images/new-window.png"/>
+                    <userActionsButton id="mobileLogoutButton"/>
+                </hbox>
+
+                <hbox id="appTitleBox"
+
+                      margin="false,false,true,false"
+                      width="100%" height="50px" visible="true">
+                    <label id="appTitleLabel"
+                           stylename="login-caption" value="msg://application.caption" visible="false" height="50px"/>
+                    <image id="logoImage" scaleMode="SCALE_DOWN" responsive="true" enable="false">
+                        <theme path="branding/app-bar-icon.png"/>
+                        <theme path="//branding/app-bar-icon.png"/>
+                        <theme path="images/app-bar-icon.png"/>
+                        <theme path="//images/app-bar-icon.png"/>
+                    </image>
+                </hbox>
+
+                <hbox id="menuButtonsHide"
+                      align="MIDDLE_RIGHT"
+                      spacing="false" width="190px">
+                    <linkButton id="menuHideBtn"
+                                align="MIDDLE_RIGHT"
+                                icon="branding/menuHide.png"
+                                invoke="onMenuHideClick"
+                                stylename="sidemenu-hidebutton"/>
+                    <linkButton id="menuUnhideBtn"
+                                align="MIDDLE_LEFT"
+                                icon="branding/menuUnhide.png"
+                                invoke="onMenuHideClick"
+                                stylename="sidemenu-hidebutton"
+                                visible="false"/>
+                </hbox>
+                <cssLayout id="sideMenuWrap"
+                           stylename="c-sidemenu-wrap" responsive="true" width="190px">
+
+                    <vbox spacing="true">
+                        <label stylename="custom-welcome-panel-caption" value="Welcome," width="100%" visible="false"/>
+                        <userIndicator id="userIndicator"
+                                       stylename="custom-user-panel-caption"
+                                       width="100%" responsive="true"/>
+                        <label/>
+                    </vbox>
+                    <hbox id="mainButtonsBox"
+                          stylename="c-main-buttons">
+                        <hbox spacing="true" height="35px"/>
+                        <userActionsButton id="logoutButton" visible="false"/>
+                        <newWindowButton id="newWindowButton"
+                                         description="mainMsg://newWindowBtnDescription"
+                                         icon="app/images/new-window.png" visible="false"/>
+                    </hbox>
+                    <timeZoneIndicator id="timeZoneIndicator"
+                                       width="100%" visible="false"/>
+                    <sideMenu id="sideMenu"
+                              showSingleExpandedMenu="true"
+                              sidePanel="sideMenuPanel"
+                              stylename="custom-sidemenu"
+                              sidePanelToggleButton="mobileMenuButton"/>
+                    <ftsField id="ftsField"
+                              width="100%"/>
+                </cssLayout>
+                <vbox spacing="true">
+                    <vbox spacing="true" height="228px" margin="true"/>
+                    <vbox spacing="true" width="100%" margin="true">
+                        <label value="Copyright Capgemini" stylename="custom-copyright-label" align="TOP_RIGHT"/>
+                    </vbox>
+                </vbox>
+            </cssLayout>
+            <workArea id="workArea"
+                      height="100%" responsive="true">
+                <initialLayout margin="true"
+                               spacing="true" >
+                    <!--
+                        This is the work area - central part of the screen.
+                        Put your components here.
+                    -->
+
+                </initialLayout>
+            </workArea>
+        </hbox>
+    </layout>
+</window>

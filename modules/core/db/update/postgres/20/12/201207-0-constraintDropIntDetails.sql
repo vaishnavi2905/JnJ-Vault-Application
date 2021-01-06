@@ -1,0 +1,1 @@
+alter table vault_int_api_details drop constraint FK_VAULT_INT_API_DETAILS_ON_INT_DETAILS ;

@@ -1,0 +1,1 @@
+create unique index IDX_VAULT_API_DETAILS_UK_API_ID on VAULT_API_DETAILS (API_ID);

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-vault" insertBefore="administration" caption="mainMsg://menu_config.application-vault"
+          stylename="create-icon" icon="LAPTOP">
+        <item screen="vault_UploadSummary.browse" caption="mainMsg://menu_config.vault_UploadSummary.browse"/>
+        <item screen="vault_StagingScreen" caption="mainMsg://menu_config.vault_StagingScreen"/>
+        <item screen="vault_ErrorSummary.browse" caption="mainMsg://menu_config.vault_ErrorSummary.browse"/>
+    </menu>
+    <menu id="masters-vault" icon="LIST_ALT" insertBefore="administration" stylename="history-icon">
+        <item screen="vault_MasterDataManagement.browse" caption="mainMsg://menu_config.vault_MasterData.browse"/>
+    </menu>
+</menu-config>

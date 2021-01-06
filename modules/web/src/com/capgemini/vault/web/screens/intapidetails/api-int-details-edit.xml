@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://apiIntDetailsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.capgemini.vault.web.screens.intapidetails">
+    <data>
+        <instance id="intApiDetailsDc"
+                  class="com.capgemini.vault.entity.IntApiDetails" view="intApiDetails-editor-view">
+            <loader/>
+        </instance>
+        <collection id="intDetailsesDc" class="com.capgemini.vault.entity.IntDetails" view="intDetails-view">
+            <loader id="intDetailsesDl">
+                <query>
+                    <![CDATA[select e from vault_IntDetails e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="vboxInt">
+        <vbox id="vboxApi" spacing="true" stylename="custom-panel">
+            <hbox spacing="true" height="100%">
+                <label value="msg://label.value_1" stylename="custom-panel-caption"/>
+                <optionsGroup id="optionGroupApi" height="100%" width="100%" orientation="horizontal" editable="false"/>
+            </hbox>
+            <hbox spacing="true" height="5px" width="100%"/>
+            <hbox spacing="true" height="100%">
+                <label stylename="custom-panel-caption" value="Integration" width="100%"/>
+                <optionsGroup id="optionsGroupInt" height="100%" width="100%" multiselect="true"/>
+            </hbox>
+        </vbox>
+        <vbox id="vboxInt" spacing="true" visible="false">
+            <hbox spacing="true">
+            </hbox>
+        </vbox>
+        <hbox spacing="true" align="TOP_RIGHT">
+            <buttonsPanel>
+                <button id="okBtn" icon="icons/ok.png" stylename="ok-icon" caption="msg://okBtn.caption"
+                        invoke="onOkBtnClick"/>
+                <button id="cancelBtn" icon="icons/cancel.png" stylename="cancel-icon"
+                        caption="msg://cancelBtn.caption" invoke="onCancelBtnClick"/>
+            </buttonsPanel>
+        </hbox>
+        <hbox id="editActions" spacing="true" visible="false">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

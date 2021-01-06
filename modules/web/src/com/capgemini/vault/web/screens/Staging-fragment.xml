@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd" xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd">
+    <data>
+        <collection id="intDetailsesDc" class="com.capgemini.vault.entity.IntDetails" view="intDetails-withApi-view">
+            <loader id="intDetailsesDl">
+                <query>
+                    <![CDATA[select e from vault_IntDetails e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where>e.intName like :name</c:where>
+                            </c:jpql>
+                            <or>
+                                <c:jpql>
+                                    <c:where>e.intInternalStatus like :status</c:where>
+                                </c:jpql>
+                            </or>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="detailsBox">
+        <vbox spacing="true" stylename="custom-panel" margin="true">
+            <groupBox id="groupBoxFilter" spacing="true" caption="Filter"
+                      stylename="summary-groupbox" collapsable="true" collapsed="true">
+                <tabSheet stylename="custom-tabsheet">
+                    <tab id="tabDefaultFilter" caption="Default" margin="true">
+                        <groupBox spacing="true" stylename="custom-groupbox">
+                            <hbox spacing="true">
+                                <label value="Integration Name" align="MIDDLE_LEFT"/>
+                                <textField id="nameFilter" width="110px" inputPrompt="Enter Name"/>
+                                <label id="labelIntStatus" align="MIDDLE_LEFT" value="msg://labelIntStatus.value"/>
+                                <lookupField id="lookupFieldStatus" optionsEnum="com.capgemini.vault.entity.Status"
+                                             width="100px" nullName="All Status"/>
+                            </hbox>
+                        </groupBox>
+                    </tab>
+                    <tab id="tabExtendedFilter" caption="msg://tabExtendedFilter.caption" margin="true">
+                        <filter id="filter" applyTo="intDetailsesTable" dataLoader="intDetailsesDl"
+                                stylename="custom-groupbox">
+                            <properties include=".*"/>
+                        </filter>
+                    </tab>
+                </tabSheet>
+            </groupBox>
+        </vbox>
+        <vbox id="detailsBox" spacing="true" height="100%" stylename="custom-panel" margin="true,true,false,true">
+            <dataGrid id="intDetailsesTable" height="100%" width="100%" dataContainer="intDetailsesDc"
+                      selectionMode="MULTI_CHECK" stylename="custom-grid">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="excel" type="excel">
+                        <properties>
+                            <property name="exportAggregation" value="false"/>
+                        </properties>
+                    </action>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="intDetailsesTableCreateBtn" action="intDetailsesTable.create" stylename="create-icon"/>
+                    <button id="intDetailsesTableEditBtn" action="intDetailsesTable.edit" stylename="edit-icon"/>
+                    <button id="intDetailsesTableExcelBtn" action="intDetailsesTable.excel" stylename="excel-icon"
+                            caption="Export"/>
+                    <button id="intDetailsesTableRemoveBtn" action="intDetailsesTable.remove" stylename="cancel-icon"/>
+                    <button id="relatedApi" caption="Related Api" invoke="onRelatedApiClick" icon="icons/category.png"
+                            stylename="history-icon"/>
+                    <button id="sendBtn" caption="msg://sendBtn.caption" icon="font-icon:ENVELOPE_O"
+                            stylename="edit-icon" invoke="onSendBtnClick"/>
+                    <button id="approveBtn" caption="msg://approveBtn.caption" icon="font-icon:CHECK"
+                            stylename="ok-icon" visible="false" invoke="onApproveBtnClick"/>
+                    <button id="rejectBtn" caption="msg://rejectBtn.caption" icon="font-icon:CLOSE"
+                            stylename="cancel-icon" visible="false" invoke="onRejectBtnClick"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="intAssetId" property="intAssetId" caption="Asset ID"/>
+                    <column id="intName" property="intName" caption="Name"/>
+                    <column id="intDescription" property="intDescription" caption="Description"/>
+                    <column id="intCountry.masterDescription" property="intCountry.masterDescription"
+                            caption="Country"/>
+                    <column id="intRegion.masterDescription" property="intRegion.masterDescription" caption="Region"/>
+                    <column id="intPlatform.masterDescription" property="intPlatform.masterDescription"
+                            caption="Platform"/>
+                    <column id="intPlatformVersion.masterDescription" property="intPlatformVersion.masterDescription"
+                            caption="Platform Version"/>
+                    <column id="intBrandOrBu.masterDescription" property="intBrandOrBu.masterDescription"
+                            caption="Business Unit"/>
+                    <column id="intPayload" property="intPayload" caption="Payload"/>
+                    <column id="intImplPattern" property="intImplPattern" caption="Implementation Pattern"/>
+                    <column id="intThroughputInSeconds" property="intThroughputInSeconds" caption="Throuput in Secs"/>
+                    <column id="intMsgSizeInKb" property="intMsgSizeInKb" caption="Message Size in Kb"/>
+                    <column id="intOwner" property="intOwner" caption="Owner"/>
+                    <column id="intBa" property="intBa" caption="BA"/>
+                    <column id="intDependency" property="intDependency" caption="Dependency"/>
+                    <column id="intBusinessOwner" property="intBusinessOwner" caption="Business Owner"/>
+                    <column id="intCrud.masterDescription" property="intCrud.masterDescription" caption="Crud"/>
+                    <column id="intPayloadSecurClass.masterDescription"
+                            property="intPayloadSecurClass.masterDescription"
+                            caption="Payload Security Classification"/>
+                    <column id="intStatus.masterDescription" property="intStatus.masterDescription" caption="Status"/>
+                    <column id="intSplOps.masterDescription" property="intSplOps.masterDescription"
+                            caption="Special Ops"/>
+                    <column id="intInitiatingSys.masterDescription" property="intInitiatingSys.masterDescription"
+                            caption="Initiating System"/>
+                    <column id="intProcessingType.masterDescription" property="intProcessingType.masterDescription"
+                            caption="Processing Type"/>
+                    <column id="intWorkstream.masterDescription" property="intWorkstream.masterDescription"
+                            caption="Workstream"/>
+                    <column id="intPriority.masterDescription" property="intPriority.masterDescription"
+                            caption="Priority"/>
+                    <column id="intProject.masterDescription" property="intProject.masterDescription"
+                            caption="Project"/>
+                    <column id="intComplexity.masterDescription" property="intComplexity.masterDescription"
+                            caption="COmplexity"/>
+                    <column id="intDesignPattern.masterDescription" property="intDesignPattern.masterDescription"
+                            caption="Design Pattern"/>
+                    <column id="intDestPayloadType.masterDescription" property="intDestPayloadType.masterDescription"
+                            caption="Destination Payload Type"/>
+                    <column id="intDestProtocol.masterDescription" property="intDestProtocol.masterDescription"
+                            caption="Destination Protocol"/>
+                    <column id="intDestApp.masterDescription" property="intDestApp.masterDescription"
+                            caption="Destination Application"/>
+                    <column id="intSrcPayloadType.masterDescription" property="intSrcPayloadType.masterDescription"
+                            caption="Source Payload Type"/>
+                    <column id="intSrcProtocol.masterDescription" property="intSrcProtocol.masterDescription"
+                            caption="SOurce Protocol"/>
+                    <column id="intRemarks" property="intRemarks" caption="Remarks"/>
+                    <column id="intFSpecLoc" property="intFSpecLoc" caption="F SPec Location"/>
+                    <column id="technicalSpecLocation" property="technicalSpecLocation"
+                            caption="Technical Spec Location"/>
+                    <column id="sourceCodeRepository" property="sourceCodeRepository" caption="Source Code Repository"/>
+                    <column id="repoLocation" property="repoLocation" caption="Repository Location"/>
+                    <column id="link" property="link" caption="Link"/>
+                    <column id="intInternalStatus" property="intInternalStatus" caption="Internal Status"/>
+                    <column id="intUpl.createdBy" property="intUpl.createdBy" caption="User"/>
+                </columns>
+            </dataGrid>
+        </vbox>
+    </layout>
+</fragment>

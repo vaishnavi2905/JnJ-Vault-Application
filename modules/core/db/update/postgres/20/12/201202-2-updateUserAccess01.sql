@@ -1,0 +1,2 @@
+alter table VAULT_USER_ACCESS add constraint FK_VAULT_USER_ACCESS_ON_GROUP foreign key (GROUP_ID) references SEC_GROUP(ID);
+create index IDX_VAULT_USER_ACCESS_ON_GROUP on VAULT_USER_ACCESS (GROUP_ID);

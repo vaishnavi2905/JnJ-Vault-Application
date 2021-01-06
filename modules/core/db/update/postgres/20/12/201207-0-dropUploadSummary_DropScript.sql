@@ -1,0 +1,1 @@
+drop table if exists VAULT_UPLOAD_SUMMARY__U26920 cascade ;

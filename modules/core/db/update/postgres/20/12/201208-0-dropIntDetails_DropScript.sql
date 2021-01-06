@@ -1,0 +1,1 @@
+drop table if exists VAULT_INT_DETAILS__U67487 cascade ;

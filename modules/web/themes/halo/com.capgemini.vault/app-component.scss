@@ -1,0 +1,5 @@
+@import "halo-ext";
+
+@mixin com_capgemini_vault {
+  @include com_capgemini_vault-halo-ext;
+}

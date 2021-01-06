@@ -1,0 +1,692 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_capgemini_vault-halo-ext {
+
+/* Css for login page */
+
+.login_caption {
+    font-style: c-login-caption;
+	font-size: 20px;
+    font-weight: bold;
+  }
+  
+.login_version {
+    font-style: c-login-caption;
+	font-size: 11px;
+	font-weight: bold;
+  }
+
+/* Css for customizing Panel */
+
+.custom-panel {
+    @include valo-panel-style($background-color:#FFFFFF, $border: 0px solid #FFFFFF);
+	font-size: 13px;
+	font-weight: 400;
+  }
+
+.custom-panel-caption {
+	font-size: 15px;
+    color: #2760AF;
+    font-weight: bold;
+
+  }
+  
+.custom-intro-caption {
+	font-size: 20px;
+    color: #2760AF;
+    font-weight: bold;
+
+  }
+
+ .custom-rate-banner-caption {
+ 	    color: #FFFFFF;
+ 	    background-color: #FF0000;
+    	font-weight: bold;
+    	font-size: 15px;
+    	text-align:left;
+    	vertical-align:text-middle;
+    	border-left:15px solid red;
+    	border-right:15px solid red;
+    }
+	
+.safe-metrics-label-caption {
+ 	    color: rgb(0,86,125);
+ 	    background-color: rgb(98,196,235);
+    	font-weight: bold;
+    	font-size: 15px;
+    	text-align:left;
+    	vertical-align:text-middle;
+		padding-top: 3px;
+		padding-right: 10px;
+		padding-bottom: 3px;
+		padding-left: 10px;
+    }
+
+   .custom-acc-rate-caption {
+    	color: #FF0000;
+       	font-weight: bold;
+       	font-size: 15px;
+       	text-align:left;
+       	vertical-align:text-middle;
+     }
+ 
+/* Css for customizing Table */
+
+.custom-table {
+
+	.v-table {
+		background-color: #FFFFFF;
+		border-color: transperent;
+	}
+	
+	.v-table-header {
+		color: #FFFFFF;
+        background: #2760AF;
+		font-size: 13px;
+		font-weight: bold;
+		text-align: center;
+	}
+	
+	tr.v-table-row:hover, tr.v-table-row-odd:hover {
+		background-color: #FDEEE6;
+		color: #000000;
+	}
+	
+	tr.v-selected.v-selected, tr.v-selected.v-selected:hover { 
+		background: #A4A4A4;
+		color: #fff;
+		.v-table-cell-content {
+			border-left-color: #BDBDBD;
+		}
+	}
+	
+	.v-table-focus {
+		outline: 1px solid #E2E2E2;
+    }
+}
+
+
+/* Css for Changing Icon Color */   
+
+  .create-icon .v-icon {
+    color: #45B39D !important;
+}
+
+  .edit-icon .v-icon {
+    color: #F39C12;
+}
+
+  .refresh-icon .v-icon {
+    color: #00B2FF !important;
+}
+
+  .excel-icon .v-icon {
+    color: #2ECC71;
+}
+
+  .history-icon .v-icon {
+    color: #CA6F1E !important;
+}
+
+  .ok-icon .v-icon {
+    color: #1E8449;
+}
+
+ .report-icon .v-icon {
+   border: none !important;
+   color: #1E8449;
+    
+}
+  .cancel-icon .v-icon {
+    color: red;
+}
+
+  .copy-icon .v-icon {
+    color: #2E86C1;
+}
+
+.export-icon .v-icon {
+    color: #A569BD;
+}
+
+.search-icon .v-icon {
+		color: #FF8000;
+ }
+
+ .help-icon .v-icon {
+  color:#DDBF5E;
+ }
+ 
+ .security-icon .v-icon {
+ color:#FF8A8A !important;
+ }
+ 
+  .debug-icon .v-icon {
+ color:#EADFBF !important;
+ }
+ 
+   .admin-icon .v-icon {
+  color:#A6DEEE !important;
+ }
+ 
+   .gme-icon .v-icon {
+    color: #2ECC71;
+}
+ 
+
+/* Css for customizing Tabsheet */
+
+.custom-tabsheet .v-tabsheet-tabitemcell{
+   .v-caption {
+		font-size: 13px;
+        font-weight:bold;
+    }
+    .v-tabsheet-tabitem-selected .v-icon.v-icon {
+        color: #ff751a;
+    }
+	.v-tabsheet-tabitem-selected .v-caption.v-caption {
+        border-bottom-color: #2760AF;
+        color: #2760AF;
+    }
+}
+
+/* Css for customizing Grid */
+	
+.custom-grid {
+	.v-grid-header th.v-grid-cell {
+		color: #FFFFFF;
+		background: #2760AF;
+		font-size: 13px;
+		font-weight: bold;
+		text-align: center;
+	}
+	
+	.v-grid-row-selected td.v-grid-cell {
+		background: #F4B794;
+		color: #000000;
+		border: 1px solid #D6EAF8;
+	}
+	
+	.v-grid:focus .v-grid-cell-focused:before {
+		display: none;
+	}
+	
+	.v-grid-editor-cells>div.not-editable.v-grid-cell {
+    background: #F2F3F4;
+  }
+}
+
+/* Applying style to the Filter Button */
+
+.v-filterselect {
+	.v-filterselect-button{
+		color: #91A7D0;
+	}
+
+}
+
+/* Css for customizing Sidemenu Panel */
+
+.custom-sidemenu-panel {
+    @include valo-panel-style($background-color:#424242, $border-radius: 0px);
+  }
+
+/* Css for customizing Sidemenu */
+
+.custom-sidemenu {
+	
+	.c-sidemenu-item .c-sidemenu-item-caption {
+		font-weight: 400;
+        font-size: 13px;
+        color: #FFFFFF;
+	}
+	  
+	.c-sidemenu-item-action.c-sidemenu-item-selected {
+		background: #2760AF;
+	}
+ 
+	.c-sidemenu-item:hover {
+		background-color: #2760AF !important;
+		color: #FFFFFF;
+	}
+
+	.c-sidemenu-submenu-open {
+		margin-left: 5px;
+	}
+	
+	.c-sidemenu-item-header  {
+		border-bottom : 1px solid #c3c3c3;
+	}
+}
+  
+/* Css for customizing Dashboard Panel */
+
+.custom-dashboard-panel {
+    @include valo-panel-style($background-color:#FFFFFF, $border: 0px solid #FFFFFF);
+}
+
+/* Applying style to the Dashboard Panel Caption */
+
+.custom-dashboard-panel-caption {
+    @include valo-panel-caption-style($background-color: #FFFFFF, $border: 3px solid #E6E6E6);
+    color: #2760AF;
+    font-weight: bold;
+}
+
+/* Css for customizing Sidemenu Button */
+
+.sidemenu-button:hover:after {
+    background: none !important;
+}
+  
+.sidemenu-button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+	color: #424242;
+    margin-top: 0;
+}
+  
+.sidemenu-button:focus:after {
+    border: none;
+    box-shadow: none;
+}
+
+/* Css for customizing Dashboard Grid */
+ 
+.custom-dashboard-grid {
+
+	.v-grid-tablewrapper {
+		border: none;
+	}
+	
+	.v-grid-header th.v-grid-cell {
+		font-weight: 400;
+		font-size: 13px;
+		color: #0B615E;
+		border: none;
+	}
+
+	.v-grid-row td.v-grid-cell {
+		font-weight: 400;
+		font-size: 13px;
+		color: #000000;
+		border: none;
+	}	
+	
+	.v-grid-row-selected td.v-grid-cell {
+		background: #FFFFFF;
+	}
+	
+	.v-grid-row-stripe td.v-grid-cell {
+		background-color: #F5F5F5;
+	}
+	
+	.v-grid:focus .v-grid-cell-focused:before {
+			display: none;
+	}
+}
+
+/* Applying style to the User Indicator & Welcome caption */
+ 
+.custom-user-panel-caption {
+	font-weight: 400;
+	font-size: 13px;
+    color: #DDBF5E;
+}
+
+.custom-welcome-panel-caption {
+	font-weight: 400;
+    color: #DDBF5E;
+}
+
+/* Applying default style to the caption */
+
+.custom-caption .v-caption{
+	color: #000000;
+	font-weight: bold;
+	font-size: 12.5px;
+	text-align:right;
+	vertical-align:text-middle;
+	border-right:7px solid white;
+}
+
+.history-button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+	color: #FFFFFF;
+    margin-top: 0;
+}
+
+.copy-button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+	color: #FFFFFF;
+    margin-top: 0;
+}
+
+.export-button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+	color: #FFFFFF;
+    margin-top: 0;
+}
+
+.filter-button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+	color: #000000;
+    margin-top: 0;
+}
+
+.filter-button:focus:after {
+    border: none;
+    box-shadow: none;
+}
+
+.filter-button:hover:after {
+    background: none !important;
+}
+
+.next-button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+    margin-top: 0;
+    [class*="wrap"] {
+        display: inline-block;
+      }
+    .v-icon {
+        float: right;
+        color: rgb(0,86,125);
+        $padding-width: ceil($v-unit-size/2.4);
+        margin-left: $padding-width + ceil($padding-width/-5);
+        + span:not(:empty) {
+          margin-left: 0;
+        }
+     }
+    .v-button-caption {
+        color: rgb(0,86,125);
+        font-weight: bold;
+    }
+    .button:hover {
+      background-color: #4CAF50; /* Green */
+      color: white;
+    }
+}
+
+.previous-button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+    margin-top: 0;
+    [class*="wrap"] {
+        display: inline-block;
+      }
+    .v-icon {
+        float: left;
+        color: rgb(0,86,125);
+        $padding-width: ceil($v-unit-size/2.4);
+        margin-right: $padding-width + ceil($padding-width/-2);
+        + span:not(:empty) {
+          margin-right: 0;
+        }
+     }
+    .v-button-caption {
+        color: rgb(0,86,125);
+        font-weight: bold;
+        padding-right: 10px;
+    }
+    .button:hover {
+      background-color: #4CAF50; /* Green */
+      color: white;
+    }
+}
+
+.myGrid td{
+      background-color: #ffffff;
+      border: 1px solid black;
+  }
+  
+.custom-grid-caption {
+	font-size: 13px;
+    color: #2760AF;
+    font-weight: bold;
+
+  }
+  
+.custom-label {
+    color: #000000;
+	font-weight: bold;
+	font-size: 12.5px;
+	text-align:right;
+	vertical-align:text-middle;
+	border-right:7px solid white;
+}
+
+.custom-copyright-label {
+    color: #B4B3B3;
+	font-weight: normal;
+	font-size: 11px;
+	font-style: oblique;
+	text-align:right;
+	vertical-align:text-middle;
+	border-style:none;
+}
+
+.custom-guide-label {
+    color: #000000;
+	font-size: 13px;
+	text-align:left;
+	vertical-align:text-middle;
+	border-right:7px solid white;
+}
+
+/* Applying style for amount and number fields */
+.v-grid-cell.amount {
+	text-align: right;
+}
+
+ .custom_amount{
+    text-align: right;
+ }
+ 
+ .custom_totals{
+    text-align: right;
+	color: #7B241C;
+	font-weight: bold;
+	font-size: 13px;
+ }
+ 
+.custom-groupbox .c-groupbox-caption
+{
+	color: #2760AF;
+	font-weight: bold;
+}
+
+.summary-groupbox .c-groupbox-caption
+{
+	color: #2760AF;
+	font-weight: bold;
+	font-size: 14px;
+	
+}
+
+/* Applying style to for fields which does not have estimatesion */
+
+.v-grid-cell.readOnly {
+    background-color: #A4A4A4;
+	color: #FFFFFF;
+}
+
+.v-grid-cell.discountStyle {
+    background-color: #FFBF00;
+	color: #000000;
+	text-align: right;
+}
+
+.v-grid-cell.readWrite {
+   background-color: #ffffff;
+}
+
+.v-textfield.filterStyle {
+	background: #FAE5D3;
+}
+
+.pffilterStyle .v-filterselect-input {
+	background: #FAE5D3;
+}
+
+/* Side menu hide button */
+.sidemenu-hidebutton {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+	color: #FCF3CF;
+    margin-top: 0;
+	margin-left: 0;
+}
+.sidemenu-hidebutton:focus:after {
+    border: none;
+    box-shadow: none;
+}
+
+.sidemenu-hidebutton:hover:after {
+    background: none !important;
+}
+
+/* Grid Header Style */
+.v-grid-cell.center-bold {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Accordion Style */
+
+.v-accordion.custom-accordion
+{
+	.v-accordion-item-caption .v-caption {
+		font-size: 13px;
+		font-weight:bold;
+	}
+	
+	.v-accordion-item-caption .v-caption:hover {
+		.v-icon {
+			color:#ff751a;
+		 }
+		 color: #2760AF;
+		 font-size: 13px;
+		 font-weight:bold;
+	}
+	
+	.v-accordion-item-open .v-accordion-item-caption .v-caption {
+		
+		.v-icon {
+			color:#ff751a;
+		 }
+		 color: #2760AF;
+		 font-size: 13px;
+		 font-weight:bold;
+	}
+	
+	.v-accordion-item-content {
+		background: #FFFFFF;
+	}
+}
+
+/* color for comparison */
+.v-grid-cell.compare-color {
+    background-color: #fcf3cf;
+    color: #000000;
+	text-align: right;
+}
+
+/* style for Message Banner */
+.custom-bannerWarnlabel {
+    color: #FFFFFF;
+    background-color: red;
+	font-weight: bold;
+	font-size: 18px;
+	text-align:left;
+	vertical-align:text-middle;
+	border-left:15px solid red;
+}
+
+.custom-bannerInfolabel {
+    color: #FFFFFF;
+    background-color: #2760AF;
+	font-weight: bold;
+	font-size: 18px;
+	text-align:left;
+	vertical-align:text-middle;
+	border-left:15px solid #2760AF;
+}
+
+.custom-hboxWarnlayout {
+    background: red;
+}
+
+.custom-hboxInfolayout {
+    background: #2760AF;
+}
+
+.v-grid-cell.totaltext {
+	font-weight: bold;
+	color: #000000;
+	background: #D3D3D3;
+	border: 1px solid #D6EAF8;
+}
+
+.v-grid-cell.totalamount {
+	text-align: right;
+	font-weight: bold;
+	color: #000000;
+	background: #D3D3D3;
+	border: 1px solid #D6EAF8;
+}
+
+.v-grid-cell.grand_total_text {
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #778899;
+	border: 1px solid #D6EAF8;
+}
+
+.v-grid-cell.grand_total_amount {
+	text-align: right;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #778899;
+	border: 1px solid #D6EAF8;
+}
+
+.v-grid {
+  .active-customer {
+    font-weight: bold;
+    background-color: red;
+  }
+
+  .v-grid-cell.premium-grade {
+    background-color: red;
+    color: white;
+  }
+
+  .v-grid-cell.high-grade {
+    background-color: green;
+    color: white;
+  }
+
+  .v-grid-cell.standard-grade {
+    background-color: blue;
+    color: white;
+  }
+}
+
+.v-grid-row.green-color > td {
+  background-color: #E36D6D;
+}
+
+}

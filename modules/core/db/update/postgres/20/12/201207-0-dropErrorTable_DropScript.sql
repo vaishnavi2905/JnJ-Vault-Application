@@ -1,0 +1,1 @@
+drop table if exists VAULT_ERROR_TABLE__U94879 cascade ;
